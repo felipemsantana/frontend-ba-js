@@ -1,0 +1,128 @@
+import Code from 'mdx-code';
+import { CodeSurfer } from "mdx-deck-code-surfer"
+export { theme } from './theme';
+
+# Entendendo JavaScript
+---
+import { Image } from 'mdx-deck'
+
+<Image src='/me.jpg' size='500px auto'>
+  <h2>ABOUT ME</h2>
+  https://github.com/felipemsantana
+</Image>
+---
+
+### Primitives
+<ul style={{ 'text-align': 'left' }}>
+  <li>undefined</li>
+  <li>null</li>
+  <li>string</li>
+  <li>number</li>
+  <li>boolean</li>
+  <li>symbol</li>
+</ul>
+
+```notes
+Primitivos são imutáveis.
+
+All primitives are immutable, i.e., they cannot be altered. It is important not to confuse a primitive itself with a variable assigned a primitive value. The variable may be reassigned a new value, but the existing value can not be changed in the ways that objects, arrays, and functions can be altered.
+```
+---
+
+<CodeSurfer
+  title="ARRAYS, OBJECTS AND FUNCTIONS"
+  code={require("!raw-loader!./objects.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
+
+
+```notes
+todos os tipos que não são primitivos são objetos
+```
+
+---
+
+<CodeSurfer
+  title="FUNCTIONS ARE OBJECTS TOO"
+  code={require("!raw-loader!./functions.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
+
+
+---
+
+<CodeSurfer
+  title="HIGH ORDER FUNCTIONS"
+  code={require("!raw-loader!./hof.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 8] },
+    { range: [10, 13] },
+  ]}
+/>
+
+
+---
+
+<CodeSurfer
+  title="HOISTING"
+  code={require("!raw-loader!./hoisting.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
+
+```notes
+let e const não são afetados pelo hoisting, lançando ReferenceError se acessados antes de declarar
+```
+---
+
+<CodeSurfer
+  title="VAR, LET, CONST AND SCOPE"
+  code={require("!raw-loader!./scope.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="ASSIGN BY VALUE AND BY REFERENCE"
+  code={require("!raw-loader!./assignment.js")}
+  lang="javascript"
+  steps={[
+    { range: [1, 4] },
+    { range: [7, 10] },
+    { range: [13, 19] },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="SLOPPY MODE AND STRICT MODE"
+  code={require("!raw-loader!./strict-mode.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 15] },
+    { range: [17, 32] },
+  ]}
+/>
+
+---
+
+### Prototypal inheritance
+
+---
+# The end
