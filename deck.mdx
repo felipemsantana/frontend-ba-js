@@ -211,7 +211,9 @@ lexical scope = static scope
     { range: [1, 7] },
     { range: [10, 11] },
     { range: [14, 15] },
-    { range: [18, 29] },
+    { range: [18, 23] },
+    { range: [18, 20], lines: [25, 26, 27] },
+    { range: [18, 20], lines: [29, 30] },
   ]}
 />
 
@@ -297,7 +299,7 @@ implementação baseada no código transpilado do babel, sem checagem de chamada
 />
 
 ```notes
-syntatical sugar
+syntatic sugar
 ```
 
 ---
@@ -327,15 +329,15 @@ syntatical sugar
     {},
     { range: [1, 11] },
     { range: [1, 13] },
-    { range: [15, 16], lines: [9, 10, 11] },
+    { range: [15, 16], lines: [2, 3, 9, 10, 11] },
     { lines: [2, 3, 4, 5, 6, 18] },
-    { lines: [2, 3, 4, 5, 6, 20, 21] },
-    { lines: [2, 3, 4, 5, 6, 23, 24] },
-    { range: [26, 31] },
-    { lines: [27, 28, 33] },
-    { lines: [23, 27, 28, 35] },
-    { lines: [27, 28, 29, 37] },
-    { lines: [27, 28, 29, 38, 39] },
+    { lines: [2, 3, 4, 5, 6, 20, 21, 22, 23] },
+    { lines: [2, 3, 4, 5, 6, 25, 26] },
+    { range: [28, 33] },
+    { lines: [29, 30, 35] },
+    { lines: [25, 29, 30, 37] },
+    { lines: [29, 30, 31, 39] },
+    { lines: [29, 30, 31, 40, 41] },
     {},
   ]}
 />
@@ -343,6 +345,7 @@ syntatical sugar
 ```notes
 dot notation
 this no contexto global se refere ao objeto global, window em browsers
+falar de document.addEventListener que passa como this o elemento do DOM
 ```
 
 ---

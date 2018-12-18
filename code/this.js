@@ -18,6 +18,8 @@ console.log(obj.add()); // 5
 console.log(obj.subtract()); // 1
 
 const subtract = obj.subtract;
+// throws TypeError in strict-mode because `this` is undefined
+// returns NaN in sloppy-mode because `this` is global object
 console.log(subtract()); // NaN
 
 const bindedSubtract = obj.subtract.bind(obj);
