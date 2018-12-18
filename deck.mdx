@@ -140,6 +140,17 @@ para copiar completamente melhor usar lib como lodash.merge
 ---
 
 <CodeSurfer
+  title="IMMEDIATELY INVOKED FUNCTION EXPRESSION"
+  code={require("!raw-loader!./code/iife.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'mostly used in browsers to avoid global scope pollution' },
+  ]}
+/>
+
+---
+
+<CodeSurfer
   title="HOISTING"
   code={require("!raw-loader!./code/hoisting.js")}
   lang="javascript"
@@ -151,17 +162,6 @@ para copiar completamente melhor usar lib como lodash.merge
 ```notes
 let e const não são afetados pelo hoisting, lançando ReferenceError se acessados antes de declarar
 ```
----
-
-<CodeSurfer
-  title="IMMEDIATELY INVOKED FUNCTION EXPRESSION"
-  code={require("!raw-loader!./code/iife.js")}
-  lang="javascript"
-  steps={[
-    { notes: 'mostly used in browsers to avoid global scope pollution' },
-  ]}
-/>
-
 ---
 
 <CodeSurfer
