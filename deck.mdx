@@ -1,8 +1,11 @@
-import Code from 'mdx-code';
 import { CodeSurfer } from "mdx-deck-code-surfer"
+
 export { theme } from './theme';
 
-# Entendendo JavaScript
+<Image src='/logo.png' size='600px auto'>
+  <h1>Entendendo JavaScript</h1>
+</Image>
+
 ---
 import { Image } from 'mdx-deck'
 
@@ -12,8 +15,41 @@ import { Image } from 'mdx-deck'
 </Image>
 ---
 
-### Primitives
-<ul style={{ 'text-align': 'left' }}>
+## JAVASCRIPT
+<ul style={{ textAlign: 'left' }}>
+  <li>first version was created by Brendan Eich in 10 days, in May 1995</li>
+  <li>high-level</li>
+  <li>weakly typed</li>
+  <li>multi-paradigm</li>
+  <ul>
+    <li>object-oriented (prototype-based)</li>
+    <li>imperative</li>
+    <li>functional</li>
+    <li>event-driven</li>
+  </ul>
+</ul>
+
+```notes
+alto nível, abstrações
+
+tipagem fraca, tipos apenas runtime, pode atribuir diferentes tipos em mesma variável, não há checagem de parâmetros
+conversões implícitas, concatenar string com número
+
+orientação a objetos baseados em protótipos, objetos que são acessados por outros objetos
+
+imperativo, executar ações, if/else
+
+funcional, pode criar pure functions, sem side-effect, idempotente
+pipe/compose de função
+métodos de manipular coleções, map/filter/reduce
+
+event-driven, listeners de ações de usuários, callback de I/O
+```
+
+---
+
+## PRIMITIVES
+<ul style={{ textAlign: 'left' }}>
   <li>undefined</li>
   <li>null</li>
   <li>string</li>
@@ -23,9 +59,7 @@ import { Image } from 'mdx-deck'
 </ul>
 
 ```notes
-Primitivos são imutáveis.
-
-All primitives are immutable, i.e., they cannot be altered. It is important not to confuse a primitive itself with a variable assigned a primitive value. The variable may be reassigned a new value, but the existing value can not be changed in the ways that objects, arrays, and functions can be altered.
+primitivos são imutáveis
 ```
 ---
 
@@ -38,15 +72,15 @@ All primitives are immutable, i.e., they cannot be altered. It is important not 
   ]}
 />
 
-
 ```notes
 todos os tipos que não são primitivos são objetos
+objetos são mutáveis
 ```
 
 ---
 
 <CodeSurfer
-  title="FUNCTIONS ARE OBJECTS TOO"
+  title="FUNCTIONS ARE OBJECTS"
   code={require("!raw-loader!./code/functions.js")}
   lang="javascript"
   steps={[
@@ -54,20 +88,30 @@ todos os tipos que não são primitivos são objetos
   ]}
 />
 
-
 ---
 
 <CodeSurfer
-  title="HIGH ORDER FUNCTIONS"
+  title="HIGH ORDER FUNCTION"
   code={require("!raw-loader!./code/hof.js")}
   lang="javascript"
   steps={[
-    {},
     { range: [1, 8] },
+    { lines: [2, 3, 4, 7] },
+    { lines: [3, 8] },
     { range: [10, 13] },
   ]}
 />
 
+---
+
+<CodeSurfer
+  title="SCOPE: VAR, LET AND CONST"
+  code={require("!raw-loader!./code/scope.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
 
 ---
 
@@ -86,11 +130,29 @@ let e const não são afetados pelo hoisting, lançando ReferenceError se acessa
 ---
 
 <CodeSurfer
-  title="VAR, LET, CONST AND SCOPE"
-  code={require("!raw-loader!./code/scope.js")}
+  title="IMMEDIATELY INVOKED FUNCTION EXPRESSION"
+  code={require("!raw-loader!./code/iife.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'mostly used in browsers to avoid global scope pollution' },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="LEXICAL SCOPE AND CLOSURE"
+  code={require("!raw-loader!./code/closure.js")}
   lang="javascript"
   steps={[
     {},
+    { range: [1, 12] },
+    { range: [14, 23] },
+    { lines: [17, 18, 19, 20, 23] },
+    { lines: [15, 17, 18, 19, 20, 24] },
+    { lines: [15, 17, 18, 19, 20, 25] },
+    { lines: [15, 17, 18, 19, 20, 26] },
+    { range: [29, 38] },
   ]}
 />
 
@@ -110,6 +172,32 @@ let e const não são afetados pelo hoisting, lançando ReferenceError se acessa
 ---
 
 <CodeSurfer
+  title="TRUTHY AND FALSY"
+  code={require("!raw-loader!./code/falsy.js")}
+  lang="javascript"
+  steps={[
+    {},
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="SHORT-CIRCUIT EVALUATION"
+  code={require("!raw-loader!./code/short-circuit.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 7] },
+    { range: [10, 11] },
+    { range: [14, 15] },
+    { range: [18, 29] },
+  ]}
+/>
+
+---
+
+<CodeSurfer
   title="SLOPPY MODE AND STRICT MODE"
   code={require("!raw-loader!./code/strict-mode.js")}
   lang="javascript"
@@ -120,9 +208,95 @@ let e const não são afetados pelo hoisting, lançando ReferenceError se acessa
   ]}
 />
 
+```notes
+Converter erros silenciosos em erros lançados
+
+Atribuir valor sem declarar
+
+Atribuir valor em campos read-only (undefined, NaN, etc)
+
+Sloppy: Valor do this é inferido, vira objeto global se não houver
+
+usando EcmaScript modules sempre será strict-mode
+```
+
 ---
 
-### Prototypal inheritance
+## Prototypal inheritance
+<ul style={{ textAlign: 'left' }}>
+  <li>objects inherit from objects (prototypes)</li>
+  <li>dynamic, can change in runtime</li>
+  <li>prototype chain</li>
+  <li>monkey patch, used for polyfills</li>
+</ul>
+
+```notes
+pode mudar em runtime pois objetos são mutáveis, todos objetos que herdam do protótipo acessam mesma instância modificada
+funções possuem propriedade `prototype` que é o objeto protótipo
+prototype chain termina com null
+```
+
+---
+
+<Image src='/pill.jpg' size='602px auto'>
+  <h2>RED PILL (FUNCTION) OR BLUE PILL (CLASS)</h2>
+</Image>
+
+---
+
+<CodeSurfer
+  title="CONSTRUCTOR FUNCTION"
+  code={require("!raw-loader!./code/function-class.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 8] },
+    { range: [11, 15], notes: '__proto__ property is returned in Object.getPrototypeOf' },
+    { lines: [17], notes: 'Object.create returns a new object that has SuperClass.prototype as the prototype' },
+    { lines: [18], notes: 'Set SuperClass as a prototype of SubClass' },
+    { range: [21, 23] },
+  ]}
+/>
+
+```notes
+implementação baseada no código transpilado do babel, sem checagem de chamada de super e outras coisas
+```
+
+---
+
+<CodeSurfer
+  title="CLASS"
+  code={require("!raw-loader!./code/class.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 10] },
+    { range: [13, 19] },
+    { range: [22, 24] },
+  ]}
+/>
+
+```notes
+syntatical sugar
+```
+
+---
+
+<CodeSurfer
+  title="EXTRA: OBJECT-CREATE"
+  code={require("!raw-loader!./code/object-create.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 6] },
+    { range: [8, 16] },
+    { lines: [2, 3, 4, 10, 11, 12, 13, 14, 16] },
+    { range: [18, 28] },
+    { lines: [2, 3, 4, 19, 21, 22, 23, 24, 25, 26, 28] },
+    {},
+  ]}
+/>
+
 
 ---
 # The end

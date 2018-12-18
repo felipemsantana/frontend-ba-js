@@ -1,5 +1,5 @@
 import { future } from "mdx-deck/themes"
-import vsDark from "prism-react-renderer/themes/vsDark"
+import vsDark from "prism-react-renderer/themes/vsDarkPlus"
 
 export const theme = {
   ...future,

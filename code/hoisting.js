@@ -6,3 +6,6 @@ console.log(hoistedFn()); // 'bar'
 function hoistedFn() {
   return 'bar';
 }
+
+func();
+import { func } from 'some-module';

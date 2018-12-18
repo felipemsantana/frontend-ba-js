@@ -1,25 +1,24 @@
-class A {
+class SuperClass {
   constructor() {
     this.field = 'foo';
-    this.print();
+    this.print(); // 'foo'
   }
 
   print() {
-    console.log('Valor do campo:', this.field);
+    console.log(this.field);
   }
 }
 
 
-class B extends A {
+class SubClass extends SuperClass {
   constructor() {
-    super();
+    super(); // 'foo'
     this.field = 'bar';
-    this.print();
+    this.print(); // 'bar'
   }
 }
 
-/* --- */
 
-const b = new B();
-console.log('b é instância de B?', b instanceof B);
-console.log('b é instância de A?', b instanceof A);
+const subClassInstance = new SubClass();
+console.log(subClassInstance instanceof SubClass); // true
+console.log(subClassInstance instanceof SuperClass); // true

@@ -1,24 +1,23 @@
-function A() {
+function SuperClass() {
   this.field = 'foo';
-  this.print();
+  this.print(); // 'foo'
 }
 
-A.prototype.print = function print() {
-  console.log('Valor do campo:', this.field);
+SuperClass.prototype.print = function print() {
+  console.log(this.field);
 };
 
 
-function B() {
-  B.__proto__.call(this);
+function SubClass() {
+  Object.getPrototypeOf(SubClass).call(this); // 'foo'
   this.field = 'bar';
-  this.print();
+  this.print(); // 'bar'
 }
 
-B.prototype = Object.create(A.prototype);
-Object.setPrototypeOf(B, A);
+SubClass.prototype = Object.create(SuperClass.prototype);
+Object.setPrototypeOf(SubClass, SuperClass);
 
-/* --- */
 
-const b = new B();
-console.log('b é instância de B?', b instanceof B);
-console.log('b é instância de A?', b instanceof A);
+const subClassInstance = new SubClass();
+console.log(subClassInstance instanceof SubClass); // true
+console.log(subClassInstance instanceof SuperClass); // true

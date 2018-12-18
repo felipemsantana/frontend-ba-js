@@ -1,10 +1,12 @@
-function myFunction() {}
+function functionDeclaration() {}
 
-myFunction instanceof Object; // true
+functionDeclaration instanceof Object; // true
 
-myFunction.field = 42;
+functionDeclaration.field = 42;
 
-myFunction.innerFunction = function () {};
-myFunction.innerFunction();
+functionDeclaration.innerFunction = function () {};
+functionDeclaration.innerFunction();
 
+const functionExpression = function () {};
 const arrowFunction = () => {};
+const identityArrowFunction = identity => identity;
