@@ -1,13 +1,11 @@
 function lexicalScope() {
-  const localConstant = 'outside value';
+  const localConstant = 'constant value';
 
   function print() {
-    const localConstant = 'inside value';
     console.log(localConstant);
   }
 
-  console.log(localConstant); // 'outside value'
-  print(); // 'inside value'
+  print(); // 'constant value'
 }
 lexicalScope();
 
@@ -26,8 +24,8 @@ console.log(count()); // 2
 console.log(count()); // 3
 
 
-const createAdd = x => y => x + y;
 // curried function
+const createAdd = x => y => x + y;
 const add5 = createAdd(5);
 console.log(add5(10)); // 15
 

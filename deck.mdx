@@ -80,11 +80,34 @@ objetos são mutáveis
 ---
 
 <CodeSurfer
+  title="ASSIGN BY VALUE AND BY REFERENCE"
+  code={require("!raw-loader!./code/assignment.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 4] },
+    { range: [7, 10] },
+    { range: [13, 15] },
+    { range: [18, 25] },
+    { range: [24, 25] },
+  ]}
+/>
+
+```notes
+para copiar objetos superficialmente pode usar Object.assign ou spread
+para copiar completamente melhor usar lib como lodash.merge
+```
+
+---
+
+<CodeSurfer
   title="FUNCTIONS ARE OBJECTS"
   code={require("!raw-loader!./code/functions.js")}
   lang="javascript"
   steps={[
     {},
+    { range: [1, 8] },
+    { lines: [1, 10, 11, 12] },
   ]}
 />
 
@@ -95,6 +118,7 @@ objetos são mutáveis
   code={require("!raw-loader!./code/hof.js")}
   lang="javascript"
   steps={[
+    {},
     { range: [1, 8] },
     { lines: [2, 3, 4, 7] },
     { lines: [3, 8] },
@@ -146,28 +170,24 @@ let e const não são afetados pelo hoisting, lançando ReferenceError se acessa
   lang="javascript"
   steps={[
     {},
-    { range: [1, 12] },
-    { range: [14, 23] },
-    { lines: [17, 18, 19, 20, 23] },
-    { lines: [15, 17, 18, 19, 20, 24] },
-    { lines: [15, 17, 18, 19, 20, 25] },
-    { lines: [15, 17, 18, 19, 20, 26] },
-    { range: [29, 38] },
+    { range: [1, 10] },
+    { range: [12, 21] },
+    { lines: [15, 16, 17, 18, 21] },
+    { lines: [13, 15, 16, 17, 18, 22] },
+    { lines: [13, 15, 16, 17, 18, 23] },
+    { lines: [13, 15, 16, 17, 18, 24] },
+    { range: [27, 36] },
+    { tokens: { 28: [6], 29: [7] } },
+    { tokens: { 28: [8], 30: [6] } },
+    { tokens: { 28: [10, 11, 12], 30: [4, 5, 6, 7] } },
+    { tokens: { 28: [10, 11, 12] }, lines: [30] },
+    { range: [27, 36] },
   ]}
 />
 
----
-
-<CodeSurfer
-  title="ASSIGN BY VALUE AND BY REFERENCE"
-  code={require("!raw-loader!./code/assignment.js")}
-  lang="javascript"
-  steps={[
-    { range: [1, 4] },
-    { range: [7, 10] },
-    { range: [13, 19] },
-  ]}
-/>
+```notes
+lexical scope = static scope
+```
 
 ---
 
@@ -297,6 +317,34 @@ syntatical sugar
   ]}
 />
 
+---
+
+<CodeSurfer
+  title="THIS"
+  code={require("!raw-loader!./code/this.js")}
+  lang="javascript"
+  steps={[
+    {},
+    { range: [1, 11] },
+    { range: [1, 13] },
+    { range: [15, 16], lines: [9, 10, 11] },
+    { lines: [2, 3, 4, 5, 6, 18] },
+    { lines: [2, 3, 4, 5, 6, 20, 21] },
+    { lines: [2, 3, 4, 5, 6, 23, 24] },
+    { range: [26, 31] },
+    { lines: [27, 28, 33] },
+    { lines: [23, 27, 28, 35] },
+    { lines: [27, 28, 29, 37] },
+    { lines: [27, 28, 29, 38, 39] },
+    {},
+  ]}
+/>
+
+```notes
+dot notation
+this no contexto global se refere ao objeto global, window em browsers
+```
 
 ---
+
 # The end

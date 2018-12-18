@@ -1,6 +1,6 @@
 function functionDeclaration() {}
 
-functionDeclaration instanceof Object; // true
+console.log(functionDeclaration instanceof Object); // true
 
 functionDeclaration.field = 42;
 
@@ -9,4 +9,4 @@ functionDeclaration.innerFunction();
 
 const functionExpression = function () {};
 const arrowFunction = () => {};
-const identityArrowFunction = identity => identity;
+const identityArrowFunction = x => x;

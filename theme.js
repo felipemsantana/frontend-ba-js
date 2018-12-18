@@ -12,4 +12,4 @@ export const theme = {
     ...vsDark,
     showNumbers: false
   }
-}
+};

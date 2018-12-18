@@ -10,8 +10,14 @@ const object2 = {};
 console.log(object1 === object2); // false
 
 
+const number = 1;
+const sameNumber = number;
+console.log(number === sameNumber); // true
+
+
 const object = { prop: 42 };
 
+// assigning same reference
 const sameObject = object;
 console.log(object === sameObject); // true
 
